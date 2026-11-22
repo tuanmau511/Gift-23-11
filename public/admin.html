@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaf3e8">
+  <title>Nhật ký trò chơi</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="admin-page">
+    <header class="admin-header"><a class="brand" href="/">little things <span>✿</span></a><button class="music-toggle" id="logout" type="button">Đăng xuất</button></header>
+    <p class="chapter">GÓC RIÊNG CỦA TUẤN</p>
+    <h1>Nhật ký <em>trò chơi.</em></h1>
+    <p class="admin-intro">Các hoạt động được lưu theo thời gian của máy chủ.</p>
+    <p id="admin-error" class="error" role="alert"></p>
+    <div class="table-wrap">
+      <table><thead><tr><th>Thời gian</th><th>ID người dùng</th><th>Hoạt động</th><th>Nội dung</th></tr></thead><tbody id="events"></tbody></table>
+    </div>
+    <p id="empty" hidden>Chưa có hoạt động nào.</p>
+  </main>
+  <script type="module" src="/admin.js"></script>
+</body>
+</html>

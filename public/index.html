@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaf3e8">
+  <title>Một chút bất ngờ cho Vy ♡</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="/">Little Things <span>✿</span></a>
+      <button class="music-toggle" id="music-toggle" type="button" aria-pressed="true">♫ <span>Nhạc: bật</span></button>
+    </header>
+
+    <section class="scene" aria-label="Một món quà nhỏ cho Vy">
+      <div class="scene-label"><span class="dot"></span> MỘT NGÀY THẬT ĐẶC BIỆT</div>
+      <div class="scene-heading">
+        <p>Gửi đến cô gái đặc biệt của anh</p>
+        <h1>Một chút bất ngờ<br><em>dành cho em.</em></h1>
+      </div>
+      <div class="stage">
+        <span class="sparkle sparkle-a">✳</span><span class="sparkle sparkle-b">✧</span><span class="sparkle sparkle-c">✦</span>
+        <div class="cloud cloud-a"></div><div class="cloud cloud-b"></div>
+        <div class="thought" id="thought" aria-hidden="true"><span>z</span> Z <b>z</b></div>
+        <button id="character" class="character sleeping" type="button" aria-label="Chạm vào Tuấn để đánh thức">
+          <svg viewBox="0 0 240 290" role="img" aria-label="Nhân vật Tuấn chibi">
+            <defs>
+              <linearGradient id="hoodie" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#c5dbb8"/><stop offset="1" stop-color="#91b28a"/></linearGradient>
+              <linearGradient id="hair" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#596754"/><stop offset="1" stop-color="#354d41"/></linearGradient>
+            </defs>
+            <ellipse cx="120" cy="277" rx="67" ry="9" fill="#9dbd9a" opacity=".35"/>
+            <path d="M83 218 L80 257 Q80 266 91 266 H107 L115 236 H125 L133 266 H149 Q160 266 160 257 L157 218Z" fill="#738e7b" stroke="#4b6552" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M81 256 Q69 257 68 269 Q80 274 108 270 L108 260 M132 260 L132 270 Q160 274 172 269 Q171 257 159 256" fill="#fffaf0" stroke="#4b6552" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M78 163 Q59 164 51 185 L43 211 Q41 222 51 225 Q60 227 65 216 L71 204 L72 231 Q120 241 168 231 L169 204 L175 216 Q180 227 189 225 Q199 222 197 211 L189 185 Q181 164 162 163Z" fill="url(#hoodie)" stroke="#4b6552" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M84 166 Q120 190 156 166 L148 154 H92Z" fill="#eaf3df" stroke="#789b79" stroke-width="3"/>
+            <path d="M105 174 L102 195 M135 174 L138 195" stroke="#f9f8e9" stroke-width="3" stroke-linecap="round"/>
+            <path d="M91 210 Q120 217 149 210 L146 224 Q120 229 94 224Z" fill="#a5c69c" stroke="#89aa85" stroke-width="2"/>
+            <path d="M46 210 Q43 218 49 222 M194 210 Q197 218 191 222" fill="none" stroke="#779b7b" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="47" cy="120" r="13" fill="#ffd7bf" stroke="#8c7064" stroke-width="3"/>
+            <circle cx="193" cy="120" r="13" fill="#ffd7bf" stroke="#8c7064" stroke-width="3"/>
+            <path d="M44 97 Q44 43 120 40 Q196 43 196 97 L192 130 Q187 169 120 175 Q53 169 48 130Z" fill="#ffe0c9" stroke="#8c7064" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M45 115 Q27 80 46 49 Q59 27 89 29 Q101 15 126 21 Q152 16 168 30 Q201 32 201 72 Q201 98 194 111 L188 95 Q180 87 178 72 Q162 87 143 84 Q129 82 120 72 Q99 91 68 87 Q59 101 49 107Z" fill="url(#hair)" stroke="#405647" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M57 55 Q68 39 88 39 M127 29 Q152 28 165 39 M55 76 Q64 64 70 61" fill="none" stroke="#829581" opacity=".65" stroke-width="3" stroke-linecap="round"/>
+            <path d="M103 26 Q106 15 115 13" fill="none" stroke="#405647" stroke-width="3.5" stroke-linecap="round"/>
+            <g class="sleep-eyes" fill="none" stroke="#5d504a" stroke-width="4" stroke-linecap="round"><path d="M71 121 Q82 130 93 121"/><path d="M147 121 Q158 130 169 121"/></g>
+            <g class="awake-eyes"><ellipse cx="82" cy="120" rx="8" ry="11" fill="#4a5146"/><ellipse cx="158" cy="120" rx="8" ry="11" fill="#4a5146"/><circle cx="85" cy="116" r="2.8" fill="#fff"/><circle cx="161" cy="116" r="2.8" fill="#fff"/></g>
+            <g class="happy-eyes" fill="none" stroke="#5d504a" stroke-width="4" stroke-linecap="round"><path d="M72 121 Q82 111 92 121"/><path d="M148 121 Q158 111 168 121"/></g>
+            <ellipse cx="63" cy="137" rx="13" ry="6" fill="#f2a6a2" opacity=".55"/><ellipse cx="177" cy="137" rx="13" ry="6" fill="#f2a6a2" opacity=".55"/>
+            <path class="smile" d="M111 143 Q120 151 129 143" fill="none" stroke="#a56f69" stroke-width="3" stroke-linecap="round"/>
+            <ellipse class="surprised-mouth" cx="120" cy="147" rx="4" ry="5" fill="#a56f69"/>
+            <path d="M52 136 L56 137 M184 137 L188 136" stroke="#eda49e" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="tap-hint" id="tap-hint"><span>☝</span> Chạm nhẹ để đánh thức thanh niên này nhé!</div>
+        <div class="ground"></div>
+        <div class="plant plant-left">✿<span>♣</span></div><div class="plant plant-right">✿<span>♣</span></div>
+      </div>
+      <div class="scene-footer"><span>✦ MỘT CHIẾC GAME NHO NHỎ</span><span>MADE WITH ♡ FOR YOU</span></div>
+    </section>
+
+    <section class="conversation" aria-label="Cuộc trò chuyện">
+      <div class="conversation-top"><span class="chapter" id="chapter">MỘT LỜI CHÀO NHỎ ✦</span><span class="heart">♡</span></div>
+      <div class="dialogue-card">
+        <div class="speaker"><span class="speaker-avatar">T</span><span>TUẤN <small>✦</small></span></div>
+        <p id="dialogue" class="dialogue" aria-live="polite">zZz... zZz... zzzzzzzzzzzzzzzzzzzzz...</p>
+        <span class="dialogue-mark">✳</span>
+      </div>
+      <div id="gift-area" class="gift-area" hidden></div>
+      <div id="choices" class="choices"></div>
+      <form id="message-form" class="message-form" hidden>
+        <label class="sr-only" for="message">Tin nhắn của em</label>
+        <input id="message" maxlength="500" autocomplete="off" placeholder="Nhắn gì đó cho anh..." required>
+        <button type="submit" aria-label="Gửi tin nhắn">➜</button>
+      </form>
+      <p class="form-hint" id="form-hint">Một chút bất ngờ đang chờ em ở đây ♡</p>
+      <p id="error" class="error" role="alert"></p>
+    </section>
+    <footer>GÓI GHÉM BẰNG CẢ TẤM LÒNG <span>♡</span><br><small>Sinh nhật anh không biết tặng gì hơn ngoài trò chơi này mong em thích nhé ♡</small></footer>
+  </main>
+  <audio id="background-audio" src="/audio/background.mp3" preload="none"></audio>
+  <audio id="recording-audio" src="/audio/recording.mp3" preload="none"></audio>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
