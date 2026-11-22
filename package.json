@@ -4,8 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "node scripts/copy-gsap.js",
+    "prestart": "npm run build",
     "start": "node server.js",
     "test": "node --test"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0"
   },
   "engines": {
     "node": ">=20.12"

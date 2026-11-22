@@ -3,5 +3,7 @@
 !/lib/
 !/public/
 !/package.json
+!/package-lock.json
+!/scripts/
 !/vercel.json
 **/.env*

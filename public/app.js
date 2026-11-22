@@ -22,6 +22,7 @@ let waitTimer;
 let typing = false;
 let finishTyping = () => {};
 let sessionReady = false;
+let flowerAnimation;
 
 async function request(path, data) {
   const response = await fetch(path, {
@@ -221,6 +222,49 @@ recording.addEventListener("error", () => {
   if (state === "recording") hint.textContent = "Ghi âm chưa sẵn sàng. Em có thể chọn Skip để mở quà tiếp theo nhé.";
 });
 
+async function animateBouquet(bouquet, forest) {
+  if (reducedMotion) return;
+  try {
+    if (!window.gsap) throw new Error("Không tải được thư viện hiệu ứng.");
+    const response = await fetch("/images/bouquet.svg");
+    if (!response.ok) throw new Error("Không tải được hình bó hoa.");
+    const svgDocument = new DOMParser().parseFromString(await response.text(), "image/svg+xml");
+    const svg = svgDocument.documentElement;
+    if (svg.localName !== "svg" || svg.querySelector("parsererror")) throw new Error("Hình bó hoa không hợp lệ.");
+    if (giftArea.hidden || !bouquet.isConnected) return;
+    const illustration = document.importNode(svg, true);
+    bouquet.querySelector("img").replaceWith(illustration);
+    const petals = [];
+    for (let index = 0; index < 12; index += 1) {
+      const petal = document.createElement("span");
+      petal.className = "falling-petal";
+      petal.style.left = `${5 + (index * 37) % 90}%`;
+      petal.style.setProperty("--petal-color", ["#efb3b1", "#f3d4bb", "#e7bbca"][index % 3]);
+      forest.append(petal);
+      petals.push(petal);
+    }
+    flowerAnimation = window.gsap.context(() => {
+      window.gsap.from(illustration.querySelectorAll(".flower-head"), {
+        scale: 0.15, opacity: 0, rotation: -25, transformOrigin: "50% 50%",
+        duration: 0.85, stagger: 0.08, ease: "back.out(1.7)",
+      });
+      window.gsap.to(illustration, {
+        rotation: 2, transformOrigin: "50% 85%", duration: 2.8,
+        ease: "sine.inOut", yoyo: true, repeat: -1,
+      });
+      petals.forEach((petal, index) => {
+        window.gsap.fromTo(petal, { y: -30, x: 0, rotation: 0 }, {
+          y: () => window.innerHeight + 40, x: index % 2 ? 40 : -40,
+          rotation: index % 2 ? 260 : -260, duration: 7 + index % 4,
+          delay: index * 0.55, repeat: -1, ease: "none",
+        });
+      });
+    }, giftArea);
+  } catch (err) {
+    if (!giftArea.hidden && bouquet.isConnected) error.textContent = `Không thể hiển thị hiệu ứng hoa: ${err.message}`;
+  }
+}
+
 function openFlower() {
   if (state !== "recording" && state !== "second-gift") return;
   finishRecording();
@@ -229,6 +273,7 @@ function openFlower() {
   const forest = document.createElement("div");
   forest.className = "flower-forest";
   forest.setAttribute("aria-hidden", "true");
+  const flowerImages = ["/images/flower.svg", "/images/flower-rose.svg", "/images/flower-cosmos.svg"];
   for (let index = 0; index < 36; index += 1) {
     const flower = document.createElement("span");
     flower.className = "forest-flower";
@@ -236,13 +281,16 @@ function openFlower() {
     const position = index % 12;
     flower.style.setProperty("--x", side ? `${index < 12 ? (position % 3) * 3 : 100 - (position % 3) * 3}%` : `${(index - 24) * 9}%`);
     flower.style.setProperty("--y", side ? `${4 + position * 8}%` : `${95 - (index % 3) * 3}%`);
-    flower.style.setProperty("--size", `${36 + (index * 17) % 38}px`);
+    flower.style.setProperty("--size", `${42 + (index * 17) % 36}px`);
     flower.style.setProperty("--delay", `${(index % 12) * 0.09}s`);
-    flower.style.setProperty("--hue", `${(index % 5) * 28}deg`);
-    flower.innerHTML = '<img src="/images/flower.svg" alt="">';
+    const image = document.createElement("img");
+    image.src = flowerImages[index % flowerImages.length];
+    image.alt = "";
+    flower.append(image);
     forest.append(flower);
   }
-  document.body.append(forest);
+  giftArea.append(forest);
+  void animateBouquet(giftArea.querySelector(".bouquet"), forest);
   hint.textContent = "Cả một vườn hoa, dành riêng cho em ♡";
   say("Hoa này không cần tưới, không sợ héo… Và quan trọng là ở xa anh vẫn có thể tặng em được", "flower-one", { choices: [["Dạ ♡", flowerTwo]] });
   nextAction = flowerTwo;
@@ -254,6 +302,10 @@ function flowerTwo() {
 }
 
 function endGifts() {
+  if (flowerAnimation) {
+    flowerAnimation.revert();
+    flowerAnimation = undefined;
+  }
   giftArea.hidden = true;
   say("Hết quà rồi đó! Chúc em sinh nhật vui vẻ nha <3", "waiting", {
     after: () => { waitTimer = setTimeout(invitation, 1300); },

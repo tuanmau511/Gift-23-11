@@ -13,10 +13,13 @@ ADMIN_PASSWORD=thay-bang-mat-khau-dai-va-rieng
 Sau đó mở PowerShell tại thư mục này và chạy:
 
 ```powershell
+npm install
 npm start
 ```
 
 Mở `http://localhost:3000` và để cửa sổ máy chủ chạy. Mật khẩu phải có ít nhất 12 ký tự; không chia sẻ hoặc đưa tệp `.env` lên mạng. Cũng có thể đặt `ADMIN_PASSWORD`, `PORT` và `DATA_DIR` bằng biến môi trường; biến môi trường có sẵn được ưu tiên hơn tệp `.env`. Không mở trực tiếp tệp HTML hoặc dùng Live Server vì trang cần backend.
+
+`npm start` tự sao chép GSAP vào `public\vendor`. Vercel chạy `npm run build` để chuẩn bị tệp này khi deploy; không cần commit thư mục `public\vendor`.
 
 ## Thêm âm thanh
 
@@ -46,6 +49,6 @@ Khi chạy trên máy mà chưa cấu hình Supabase, lịch sử lưu trong `da
 
 Nếu muốn dùng Supabase khi chạy trên máy, đặt hai biến Supabase trên trong `.env` ở thư mục gốc rồi khởi động lại máy chủ. Nếu không đặt cả hai biến, chế độ local vẫn dùng tệp. Trên Vercel, thiếu cấu hình Supabase sẽ báo lỗi thay vì âm thầm lưu tạm. Supabase Data API phải được bật và giới hạn số dòng tối đa mỗi truy vấn phải từ 500 trở lên.
 
-MP3 trong `public\audio` sẽ được công khai cùng trang. Chúng đang bị Git bỏ qua: nếu deploy từ Git, hãy chủ động đưa các tệp muốn chia sẻ vào repository trước khi deploy; nếu dùng CLI, đảm bảo chúng có trong thư mục dự án lúc upload. Không đưa `.env` hoặc `data` lên Git. Khi tự host ngoài Vercel, dùng HTTPS và đặt `NODE_ENV=production` để bật cookie bảo mật.
+Hai tệp `public\audio\background.mp3` và `public\audio\recording.mp3` được phép đưa vào Git để deploy. Hãy commit và push chúng cùng mã nguồn nếu deploy từ Git, hoặc đảm bảo chúng có trong thư mục dự án lúc upload bằng CLI. Hai tệp sẽ công khai cùng trang; chỉ dùng âm thanh bạn có quyền chia sẻ. Không đưa `.env` hoặc `data` lên Git. Khi tự host ngoài Vercel, dùng HTTPS và đặt `NODE_ENV=production` để bật cookie bảo mật.
 
 Chạy kiểm thử bằng `npm test`.
