@@ -1,4 +1,5 @@
 {
+  "framework": null,
   "outputDirectory": "public",
   "rewrites": [
     { "source": "/ad5112311", "destination": "/admin.html" }

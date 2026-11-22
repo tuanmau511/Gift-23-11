@@ -37,7 +37,7 @@ Khi chạy trên máy mà chưa cấu hình Supabase, lịch sử lưu trong `da
 
 1. Tạo một dự án Supabase. Trong **SQL Editor**, chạy toàn bộ nội dung tệp `supabase\schema.sql` để tạo bảng và hàm. Các bảng bật Row Level Security và không cấp quyền cho `anon` hay `authenticated`; không tạo policy công khai cho các bảng này.
 2. Trong cài đặt API của Supabase, lấy **Project URL** và **Secret key** (`sb_secret_...`; cũng hỗ trợ khóa `service_role` kiểu cũ). Secret key có toàn quyền truy cập dự án: không gửi cho người khác, không đưa vào mã nguồn hoặc trình duyệt.
-3. Đưa dự án lên Git rồi import vào Vercel, hoặc triển khai bằng Vercel CLI từ thư mục dự án. Trên Vercel, chọn **Other** nếu cần chọn framework; `vercel.json` đã cấu hình thư mục giao diện và đường dẫn quản trị. Chọn Node.js 22.x trong cài đặt dự án.
+3. Đưa dự án lên Git rồi import vào Vercel, hoặc triển khai bằng Vercel CLI từ thư mục dự án. Đặt Root Directory là thư mục gốc của dự án, không phải `public`. `vercel.json` đặt Framework Preset là **Other**, cấu hình thư mục giao diện và đường dẫn quản trị; không chọn Node.js backend làm framework. Chọn Node.js 22.x trong cài đặt dự án.
 4. Trong **Vercel → Project → Settings → Environment Variables**, đặt ba biến cho môi trường triển khai:
    - `ADMIN_PASSWORD`: mật khẩu quản trị riêng, ít nhất 12 ký tự.
    - `SUPABASE_URL`: Project URL ở bước 2.
